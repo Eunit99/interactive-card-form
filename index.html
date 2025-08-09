@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Frontend Mentor | Interactive card details form</title>
+  </head>
+
+  <body>
+    <main>
+      <div class="card">
+        <div class="card-front">
+          <img src="./images/bg-card-front.png" alt="" />
+          <div class="card-info">
+            <img class="card-logo" src="./images/card-logo.svg" alt="" />
+            <div class="card-data">
+              <div class="card-number">0000 0000 0000 0000</div>
+              <div class="card-holder">
+                <div class="card-name">Jane Appleseed</div>
+                <div class="card-date">
+                  <span class="card-month">00</span>/<span class="card-year">00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-back">
+          <img src="./images/bg-card-back.png" alt="" />
+          <div class="card-code">000</div>
+        </div>
+      </div>
+
+      <form id="form" onsubmit="OnSubmit(event)">
+        <label for="name">CARDHOLDER NAME</label>
+        <input name="name" id="name" type="text" placeholder="e.g. Jane Appleseed" onkeypress="NameUpdate(this)"
+          onkeyup="NameUpdate(this)" />
+        <div class="error-msg">Can't be blank</div>
+        <label for="number">CARD NUMBER</label>
+        <input name="number" id="number" type="text" onkeypress="return checkDigit(event)"
+          placeholder="e.g. 1234 5678 9123 0000" onkeyup="NumberUpdate(this)" />
+        <div class="error-msg">Can't be blank</div>
+        <div class="input-group">
+          <div class="date">
+            <label>EXP. DATE (MM/YY)</label>
+            <input name="month" id="month" type="number" onkeypress="return checkLength(this,2)" min="1" max="12"
+              onkeyup="MonthUpdate(this)" placeholder="MM" />
+
+            <input id="year" name="year" type="number" onkeyup="YearUpdate(this)" min="01" max="99"
+              onkeypress="return checkLength(this,2)" placeholder="YY" />
+            <div class="error-msg">Can't be blank</div>
+          </div>
+          <div class="code">
+            <label>CVC</label>
+            <input name="code" id="code" type="number" onkeypress="if(this.value.length==3) return false;" min="000"
+              max="999" placeholder="e.g. 123" onkeyup="CodeUpdate(this)" />
+            <div class="error-msg">Can't be blank</div>
+          </div>
+        </div>
+        <button type="submit">Confirm</button>
+      </form>
+      <div class="thank-you hidden">
+        <img src="./images/icon-complete.svg" alt="" />
+        <div>THANK YOU!</div>
+        <p>We've added your card details</p>
+        <button>Confirm</button>
+      </div>
+    </main>
+  </body>
+
+</html>
