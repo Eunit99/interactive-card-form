@@ -272,3 +272,16 @@ input.error+.error-msg {
     width: 100%;
   }
 }
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  color: var(--dark-grayish-violet-2);
+  font-size: 0.8rem;
+}
+
+footer a {
+  color: var(--very-dark-violet);
+  text-decoration: none;
+}
